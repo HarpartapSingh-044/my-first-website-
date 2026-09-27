@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HS Groups University</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#172033;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+}
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.navbar{
+    background:#082c5c;
+    color:white;
+    padding:16px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    font-size:15px;
+}
+
+.nav-links a:hover{
+    color:#fbbf24;
+}
+
+.hero{
+    min-height:620px;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(90deg,rgba(4,29,61,.95),rgba(8,63,125,.85)),
+    url("https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:60px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    line-height:1.7;
+    color:#dbeafe;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 22px;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:#f59e0b;
+    color:white;
+}
+
+.btn-blue{
+    background:#082c5c;
+    color:white;
+}
+
+.btn-white{
+    background:white;
+    color:#082c5c;
+}
+
+.section{
+    padding:70px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:45px;
+    color:#082c5c;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:28px;
+    border-radius:14px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+}
+
+.card h3{
+    margin-bottom:12px;
+    color:#082c5c;
+}
+
+.card p{
+    line-height:1.7;
+    color:#64748b;
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.course-card{
+    transition:.2s;
+}
+
+.course-card:hover{
+    transform:translateY(-5px);
+}
+
+.price{
+    font-size:22px;
+    color:#082c5c;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.page{
+    display:none;
+    min-height:70vh;
+}
+
+.page.active{
+    display:block;
+}
+
+.form-container{
+    max-width:650px;
+    margin:50px auto;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #d1d5db;
+    border-radius:7px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#082c5c;
+}
+
+.dashboard{
+    padding:50px 0;
+}
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.stat-number{
+    font-size:35px;
+    font-weight:bold;
+    color:#082c5c;
+    margin-top:10px;
+}
+
+.table-container{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    text-align:left;
+    padding:14px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+th{
+    background:#f8fafc;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.badge-pending{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.badge-paid{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.badge-approved{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.notice{
+    margin-bottom:15px;
+    padding:20px;
+    background:white;
+    border-left:5px solid #082c5c;
+    border-radius:7px;
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
+}
+
+.notice h3{
+    color:#082c5c;
+    margin-bottom:8px;
+}
+
+.footer{
+    background:#061b35;
+    color:white;
+    padding:50px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer h3{
+    margin-bottom:15px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+.footer-bottom{
+    text-align:center;
+    border-top:1px solid #1e3a5f;
+    margin-top:40px;
+    padding-top:20px;
+    color:#94a3b8;
+}
+
+.mobile-menu{
+    display:none;
+}
+
+.alert{
+    padding:15px;
+    margin-bottom:20px;
+    border-radius:7px;
+    background:#dbeafe;
+    color:#1e3a8a;
+}
+
+.admin-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    padding:7px 12px;
+    border-radius:5px;
+    color:white;
+    font-size:13px;
+}
+
+.approve{
+    background:#16a34a;
+}
+
+.reject{
+    background:#dc2626;
+}
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:block;
+        font-size:25px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:550px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+<div class="container nav-content">
+
+<div class="logo">
+🎓 HS Groups University
+</div>
+
+<div class="nav-links">
+<a href="#" onclick="showPage('home')">Home</a>
+<a href="#" onclick="showPage('about')">About</a>
+<a href="#" onclick="showPage('courses')">Courses</a>
+<a href="#" onclick="showPage('admission')">Admissions</a>
+<a href="#" onclick="showPage('notices')">Notices</a>
+<a href="#" onclick="showPage('contact')">Contact</a>
+<a href="#" onclick="showPage('login')">Login</a>
+</div>
+
+<div class="mobile-menu">☰</div>
+
+</div>
+
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<div id="home" class="page active">
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<p style="color:#fbbf24;font-weight:bold;">
+WELCOME TO
+</p>
+
+<h1>
+HS Groups University
+</h1>
+
+<p>
+Empowering students through quality education,
+innovation, research and professional development.
+Build your future with us.
+</p>
+
+<div class="buttons">
+
+<button
+class="btn btn-primary"
+onclick="showPage('admission')">
+Apply for Admission
+</button>
+
+<button
+class="btn btn-white"
+onclick="showPage('courses')">
+Explore Courses
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<h2 class="section-title">
+Why Choose HS Groups University?
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">🎓</div>
+
+<h3>Quality Education</h3>
+
+<p>
+Industry-focused programs and experienced faculty
+help students develop knowledge and professional skills.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏫</div>
+
+<h3>Modern Campus</h3>
+
+<p>
+Modern classrooms, laboratories, libraries,
+technology and student facilities.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">💼</div>
+
+<h3>Career Development</h3>
+
+<p>
+Career guidance, placement support, internships
+and professional development opportunities.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" style="background:#eaf2ff;">
+
+<div class="container">
+
+<h2 class="section-title">
+Start Your Academic Journey
+</h2>
+
+<p style="text-align:center;max-width:700px;margin:auto;color:#64748b;line-height:1.7;">
+
+Create your student account and apply for admission
+online.
+
+</p>
+
+<div style="text-align:center;margin-top:25px;">
+
+<button
+class="btn btn-blue"
+onclick="showPage('register')">
+Create Student Account
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= ABOUT ================= -->
+
+<div id="about" class="page">
+
+<section class="section">
+
+<div class="container">
+
+<h1 class="section-title">
+About HS Groups University
+</h1>
+
+<div class="card">
+
+<p style="font-size:18px;line-height:2;">
+
+HS Groups University is committed to providing
+high-quality education and developing students
+into knowledgeable, skilled and responsible
+professionals.
+
+Our academic environment combines theoretical
+knowledge with practical learning, innovation,
+technology and professional development.
+
+</p>
+
+</div>
+
+
+<div class="cards" style="margin-top:30px;">
+
+<div class="card">
+
+<h3>Our Vision</h3>
+
+<p>
+To create an environment where students can
+develop academic excellence, professional skills
+and leadership.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Our Mission</h3>
+
+<p>
+To provide accessible, innovative and
+career-oriented education.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Our Values</h3>
+
+<p>
+Integrity, excellence, innovation, responsibility
+and student success.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= COURSES ================= -->
+
+<div id="courses" class="page">
+
+<section class="section">
+
+<div class="container">
+
+<h1 class="section-title">
+Courses & Programs
+</h1>
+
+<div class="cards">
+
+<div class="card course-card">
+
+<h3>B.Tech Computer Science</h3>
+
+<p>
+Duration: 4 Years
+</p>
+
+<p>
+Computer Science and Engineering program
+covering programming, databases, AI,
+software engineering and modern technologies.
+</p>
+
+<div class="price">
+₹95,000 / year
+</div>
+
+<button
+class="btn btn-blue"
+style="margin-top:15px;"
+onclick="showPage('admission')">
+Apply
+</button>
+
+</div>
+
+
+<div class="card course-card">
+
+<h3>Bachelor of Business Administration</h3>
+
+<p>
+Duration: 3 Years
+</p>
+
+<p>
+Management program covering business,
+finance, marketing, entrepreneurship and
+organizational management.
+</p>
+
+<div class="price">
+₹65,000 / year
+</div>
+
+<button
+class="btn btn-blue"
+style="margin-top:15px;"
+onclick="showPage('admission')">
+Apply
+</button>
+
+</div>
+
+
+<div class="card course-card">
+
+<h3>Bachelor of Computer Applications</h3>
+
+<p>
+Duration: 3 Years
+</p>
+
+<p>
+Application development, programming,
+database management and software technologies.
+</p>
+
+<div class="price">
+₹60,000 / year
+</div>
+
+<button
+class="btn btn-blue"
+style="margin-top:15px;"
+onclick="showPage('admission')">
+Apply
+</button>
+
+</div>
+
+
+<div class="card course-card">
+
+<h3>Master of Computer Applications</h3>
+
+<p>
+Duration: 2 Years
+</p>
+
+<p>
+Advanced computer applications, software
+development, cloud computing and data science.
+</p>
+
+<div class="price">
+₹90,000 / year
+</div>
+
+<button
+class="btn btn-blue"
+style="margin-top:15px;"
+onclick="showPage('admission')">
+Apply
+</button>
+
+</div>
+
+
+<div class="card course-card">
+
+<h3>MBA</h3>
+
+<p>
+Duration: 2 Years
+</p>
+
+<p>
+Advanced business management, leadership,
+finance, marketing and entrepreneurship.
+</p>
+
+<div class="price">
+₹1,10,000 / year
+</div>
+
+<button
+class="btn btn-blue"
+style="margin-top:15px;"
+onclick="showPage('admission')">
+Apply
+</button>
+
+</div>
+
+
+<div class="card course-card">
+
+<h3>B.Com</h3>
+
+<p>
+Duration: 3 Years
+</p>
+
+<p>
+Accounting, finance, economics, taxation
+and business studies.
+</p>
+
+<div class="price">
+₹55,000 / year
+</div>
+
+<button
+class="btn btn-blue"
+style="margin-top:15px;"
+onclick="showPage('admission')">
+Apply
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= ADMISSION ================= -->
+
+<div id="admission" class="page">
+
+<section class="section">
+
+<div class="container">
+
+<h1 class="section-title">
+Online Admission
+</h1>
+
+<div class="form-container">
+
+<div class="card">
+
+<div id="admissionMessage"></div>
+
+<form id="admissionForm">
+
+<div class="form-group">
+
+<label>Student Name</label>
+
+<input
+id="studentName"
+required
+placeholder="Enter full name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Date of Birth</label>
+
+<input
+id="dob"
+type="date"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Gender</label>
+
+<select id="gender" required>
+
+<option value="">Select Gender</option>
+
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Phone</label>
+
+<input
+id="phone"
+required
+placeholder="Enter phone number">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+id="email"
+type="email"
+required
+placeholder="Enter email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Previous Education</label>
+
+<input
+id="education"
+placeholder="12th / Diploma / Graduation">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Course</label>
+
+<select id="course" required>
+
+<option value="">
+Select Course
+</option>
+
+<option>B.Tech Computer Science</option>
+<option>BCA</option>
+<option>BBA</option>
+<option>MCA</option>
+<option>MBA</option>
+<option>B.Com</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Address</label>
+
+<textarea
+id="address"
+rows="5"
+placeholder="Enter complete address"></textarea>
+
+</div>
+
+
+<button
+class="btn btn-blue"
+style="width:100%;">
+Submit Application
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= NOTICES ================= -->
+
+<div id="notices" class="page">
+
+<section class="section">
+
+<div class="container">
+
+<h1 class="section-title">
+University Notices
+</h1>
+
+
+<div class="notice">
+
+<h3>
+Admissions Open
+</h3>
+
+<p>
+Applications are open for the upcoming academic session.
+</p>
+
+<small>
+26 September 2026
+</small>
+
+</div>
+
+
+<div class="notice">
+
+<h3>
+Scholarship Applications
+</h3>
+
+<p>
+Eligible students can submit scholarship applications
+through the student portal.
+</p>
+
+<small>
+20 September 2026
+</small>
+
+</div>
+
+
+<div class="notice">
+
+<h3>
+Semester Examination
+</h3>
+
+<p>
+Students should check the examination schedule
+through the student dashboard.
+</p>
+
+<small>
+15 September 2026
+</small>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= CONTACT ================= -->
+
+<div id="contact" class="page">
+
+<section class="section">
+
+<div class="container">
+
+<h1 class="section-title">
+Contact Us
+</h1>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>University Address</h3>
+
+<p>
+HS Groups University<br>
+University Campus<br>
+Kangra Himachal pradesh, India
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Contact</h3>
+
+<p>
+Email:<br>
+info@hsgroupsuniversity.edu
+</p>
+
+<p style="margin-top:10px;">
+Phone:<br>
++91 9000000001
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Admissions Office</h3>
+
+<p>
+Admissions Helpline:<br>
++91 9000000001
+</p>
+
+<p style="margin-top:10px;">
+Monday - Saturday<br>
+9:00 AM - 5:00 PM
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= REGISTER ================= -->
+
+<div id="register" class="page">
+
+<section class="section">
+
+<div class="form-container">
+
+<div class="card">
+
+<h1 style="color:#082c5c;margin-bottom:10px;">
+Student Registration
+</h1>
+
+<p style="color:#64748b;margin-bottom:25px;">
+Create your university student account.
+</p>
+
+<div id="registerMessage"></div>
+
+<form id="registerForm">
+
+<div class="form-group">
+
+<label>Full Name</label>
+
+<input
+id="registerName"
+required
+placeholder="Full name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+id="registerEmail"
+type="email"
+required
+placeholder="Email address">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Phone</label>
+
+<input
+id="registerPhone"
+required
+placeholder="Phone number">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Password</label>
+
+<input
+id="registerPassword"
+type="password"
+required
+placeholder="Password">
+
+</div>
+
+
+<button
+class="btn btn-blue"
+style="width:100%;">
+Create Account
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div id="login" class="page">
+
+<section class="section">
+
+<div class="form-container">
+
+<div class="card">
+
+<h1 style="color:#082c5c;">
+University Login
+</h1>
+
+<p style="color:#64748b;margin-top:8px;">
+Student / Admin Portal
+</p>
+
+<div id="loginMessage"></div>
+
+<form id="loginForm" style="margin-top:25px;">
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+id="loginEmail"
+type="email"
+required
+placeholder="Enter email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Password</label>
+
+<input
+id="loginPassword"
+type="password"
+required
+placeholder="Enter password">
+
+</div>
+
+
+<button
+class="btn btn-blue"
+style="width:100%;">
+Login
+</button>
+
+</form>
+
+
+<p style="margin-top:20px;text-align:center;">
+
+Demo Student:<br>
+
+student@example.com<br>
+
+<strong>student123</strong>
+
+</p>
+
+<p style="margin-top:15px;text-align:center;">
+
+Demo Admin:<br>
+
+admin@hsuniversity.com<br>
+
+<strong>admin123</strong>
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= STUDENT DASHBOARD ================= -->
+
+<div id="studentDashboard" class="page">
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-header">
+
+<div>
+
+<h1 style="font-size:35px;color:#082c5c;">
+Student Dashboard
+</h1>
+
+<p id="studentWelcome">
+Welcome Student
+</p>
+
+</div>
+
+<button
+class="btn btn-blue"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<p>Applications</p>
+
+<div
+class="stat-number"
+id="applicationCount">
+0
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<p>Total Fees</p>
+
+<div class="stat-number">
+₹95,000
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<p>Paid Fees</p>
+
+<div class="stat-number">
+₹45,000
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<p>Attendance</p>
+
+<div class="stat-number">
+86%
+</div>
+
+</div>
+
+</div>
+
+
+<div class="table-container">
+
+<h2 style="margin-bottom:20px;">
+Admission Application
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Course</th>
+<th>Status</th>
+<th>Date</th>
+
+</tr>
+
+</thead>
+
+<tbody id="studentApplications">
+
+<tr>
+
+<td>
+B.Tech Computer Science
+</td>
+
+<td>
+<span class="badge badge-pending">
+Pending
+</span>
+</td>
+
+<td>
+26/09/2026
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div class="table-container" style="margin-top:25px;">
+
+<h2 style="margin-bottom:20px;">
+Fee Transactions
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Transaction</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+TXN001
+</td>
+
+<td>
+Admission Fee
+</td>
+
+<td>
+₹25,000
+</td>
+
+<td>
+<span class="badge badge-paid">
+Paid
+</span>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+TXN002
+</td>
+
+<td>
+Semester Fee
+</td>
+
+<td>
+₹20,000
+</td>
+
+<td>
+<span class="badge badge-paid">
+Paid
+</span>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div class="cards" style="margin-top:25px;">
+
+<div class="card">
+
+<h3>📚 Attendance</h3>
+
+<p>
+Current attendance: <strong>95%</strong>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>📝 Examination</h3>
+
+<p>
+Next examination: 15 November 2026
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🏆 Results</h3>
+
+<p>
+Latest semester result available.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= ADMIN ================= -->
+
+<div id="adminDashboard" class="page">
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-header">
+
+<div>
+
+<h1 style="font-size:35px;color:#082c5c;">
+Admin Dashboard
+</h1>
+
+<p>
+University Administration Panel
+</p>
+
+</div>
+
+<button
+class="btn btn-blue"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<p>Total Students</p>
+
+<div class="stat-number">
+1,245
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<p>Applications</p>
+
+<div class="stat-number">
+158
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<p>Pending Payments</p>
+
+<div class="stat-number">
+37
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<p>Courses</p>
+
+<div class="stat-number">
+24
+</div>
+
+</div>
+
+</div>
+
+
+<div class="table-container">
+
+<h2 style="margin-bottom:20px;">
+Admission Applications
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Student</th>
+<th>Course</th>
+<th>Email</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="adminApplications">
+
+<tr>
+
+<td>
+kartik Sharma
+</td>
+
+<td>
+B.Tech Computer Science
+</td>
+
+<td>
+Khusi@example.com
+</td>
+
+<td>
+<span
+id="status1"
+class="badge badge-pending">
+Pending
+</span>
+</td>
+
+<td>
+
+<div class="admin-actions">
+
+<button
+class="small-btn approve"
+onclick="approveApplication(1)">
+Approve
+</button>
+
+<button
+class="small-btn reject"
+onclick="rejectApplication(1)">
+Reject
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Riya Singh
+</td>
+
+<td>
+BBA
+</td>
+
+<td>
+aman@example.com
+</td>
+
+<td>
+<span
+id="status2"
+class="badge badge-pending">
+Pending
+</span>
+</td>
+
+<td>
+
+<div class="admin-actions">
+
+<button
+class="small-btn approve"
+onclick="approveApplication(2)">
+Approve
+</button>
+
+<button
+class="small-btn reject"
+onclick="rejectApplication(2)">
+Reject
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div class="cards" style="margin-top:25px;">
+
+<div class="card">
+
+<h3>👨‍🎓 Students</h3>
+
+<p>
+Manage student accounts, profiles and enrollments.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>💰 Fees</h3>
+
+<p>
+Manage fee structures and payment records.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>📢 Notices</h3>
+
+<p>
+Create and publish university notices.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>📊 Reports</h3>
+
+<p>
+View admission, fee and student reports.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>
+🎓 HS Groups University
+</h3>
+
+<p>
+Empowering students through education,
+innovation and professional development.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Quick Links
+</h3>
+
+<p>Admissions</p>
+<p>Courses</p>
+<p>Student Portal</p>
+<p>Notices</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Contact
+</h3>
+
+<p>
+info@hsgroupsuniversity.edu
+</p>
+
+<p>
++91 98765 43210
+</p>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 HS Groups University.
+All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   PAGE NAVIGATION
+========================================== */
+
+function showPage(pageId){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const page = document.getElementById(pageId);
+
+    if(page){
+        page.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* ==========================================
+   LOCAL STORAGE DATABASE
+========================================== */
+
+let users =
+JSON.parse(
+localStorage.getItem("hs_users")
+) || [
+
+{
+    name:"Demo Student",
+    email:"student@example.com",
+    phone:"9876543210",
+    password:"student123",
+    role:"student"
+},
+
+{
+    name:"University Admin",
+    email:"admin@hsuniversity.com",
+    phone:"9876543211",
+    password:"admin123",
+    role:"admin"
+}
+
+];
+
+
+let applications =
+JSON.parse(
+localStorage.getItem("hs_applications")
+) || [];
+
+
+/* ==========================================
+   REGISTER
+========================================== */
+
+document
+.getElementById("registerForm")
+.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const name =
+    document.getElementById("registerName").value;
+
+    const email =
+    document.getElementById("registerEmail").value;
+
+    const phone =
+    document.getElementById("registerPhone").value;
+
+    const password =
+    document.getElementById("registerPassword").value;
+
+
+    const exists =
+    users.find(
+        user => user.email === email
+    );
+
+
+    if(exists){
+
+        document
+        .getElementById("registerMessage")
+        .innerHTML =
+        `<div class="alert">
+        Email already registered.
+        </div>`;
+
+        return;
+    }
+
+
+    users.push({
+
+        name,
+        email,
+        phone,
+        password,
+        role:"student"
+
+    });
+
+
+    localStorage.setItem(
+        "hs_users",
+        JSON.stringify(users)
+    );
+
+
+    document
+    .getElementById("registerMessage")
+    .innerHTML =
+    `<div class="alert">
+    Account created successfully.
+    Please login.
+    </div>`;
+
+
+    document
+    .getElementById("registerForm")
+    .reset();
+
+
+    setTimeout(
+        () => showPage("login"),
+        1200
+    );
+
+});
+
+
+/* ==========================================
+   LOGIN
+========================================== */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+
+    const email =
+    document.getElementById("loginEmail").value;
+
+    const password =
+    document.getElementById("loginPassword").value;
+
+
+    const user =
+    users.find(
+        u =>
+        u.email === email &&
+        u.password === password
+    );
+
+
+    if(!user){
+
+        document
+        .getElementById("loginMessage")
+        .innerHTML =
+        `<div class="alert">
+        Invalid email or password.
+        </div>`;
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "hs_current_user",
+        JSON.stringify(user)
+    );
+
+
+    if(user.role === "admin"){
+
+        showPage("adminDashboard");
+
+    }else{
+
+        document
+        .getElementById("studentWelcome")
+        .innerText =
+        "Welcome, " + user.name;
+
+        updateStudentDashboard();
+
+        showPage("studentDashboard");
+    }
+
+});
+
+
+/* ==========================================
+   ADMISSION
+========================================== */
+
+document
+.getElementById("admissionForm")
+.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+
+    const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "hs_current_user"
+        )
+    );
+
+
+    if(!currentUser){
+
+        alert(
+            "Please login before submitting an application."
+        );
+
+        showPage("login");
+
+        return;
+    }
+
+
+    const application = {
+
+        id:Date.now(),
+
+        studentName:
+        document.getElementById(
+            "studentName"
+        ).value,
+
+        dob:
+        document.getElementById(
+            "dob"
+        ).value,
+
+        gender:
+        document.getElementById(
+            "gender"
+        ).value,
+
+        phone:
+        document.getElementById(
+            "phone"
+        ).value,
+
+        email:
+        document.getElementById(
+            "email"
+        ).value,
+
+        education:
+        document.getElementById(
+            "education"
+        ).value,
+
+        course:
+        document.getElementById(
+            "course"
+        ).value,
+
+        address:
+        document.getElementById(
+            "address"
+        ).value,
+
+        status:"Pending",
+
+        date:
+        new Date().toLocaleDateString()
+
+    };
+
+
+    applications.push(application);
+
+
+    localStorage.setItem(
+        "hs_applications",
+        JSON.stringify(applications)
+    );
+
+
+    document
+    .getElementById("admissionMessage")
+    .innerHTML =
+    `<div class="alert">
+    Application submitted successfully.
+    Application ID: ${application.id}
+    </div>`;
+
+
+    document
+    .getElementById("admissionForm")
+    .reset();
+
+
+    updateStudentDashboard();
+
+});
+
+
+/* ==========================================
+   STUDENT DASHBOARD
+========================================== */
+
+function updateStudentDashboard(){
+
+    const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "hs_current_user"
+        )
+    );
+
+
+    if(!currentUser){
+        return;
+    }
+
+
+    const studentApplications =
+    applications.filter(
+        application =>
+        application.email ===
+        currentUser.email
+    );
+
+
+    document
+    .getElementById("applicationCount")
+    .innerText =
+    studentApplications.length;
+
+
+    const table =
+    document.getElementById(
+        "studentApplications"
+    );
+
+
+    if(studentApplications.length === 0){
+
+        table.innerHTML = `
+
+        <tr>
+
+        <td colspan="3"
+        style="text-align:center;color:#64748b;">
+
+        No applications found.
+
+        </td>
+
+        </tr>
+
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+    studentApplications
+    .map(application => `
+
+        <tr>
+
+        <td>
+        ${application.course}
+        </td>
+
+        <td>
+
+        <span class="badge ${
+            application.status === "Approved"
+            ? "badge-approved"
+            : "badge-pending"
+        }">
+
+        ${application.status}
+
+        </span>
+
+        </td>
+
+        <td>
+        ${application.date}
+        </td>
+
+        </tr>
+
+    `)
+    .join("");
+
+}
+
+
+/* ==========================================
+   ADMIN APPROVAL
+========================================== */
+
+function approveApplication(id){
+
+    const element =
+    document.getElementById(
+        "status" + id
+    );
+
+
+    if(element){
+
+        element.innerText =
+        "Approved";
+
+        element.className =
+        "badge badge-approved";
+
+    }
+
+}
+
+
+/* ==========================================
+   ADMIN REJECTION
+========================================== */
+
+function rejectApplication(id){
+
+    const element =
+    document.getElementById(
+        "status" + id
+    );
+
+
+    if(element){
+
+        element.innerText =
+        "Rejected";
+
+        element.className =
+        "badge";
+
+        element.style.background =
+        "#fee2e2";
+
+        element.style.color =
+        "#991b1b";
+
+    }
+
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+function logout(){
+
+    localStorage.removeItem(
+        "hs_current_user"
+    );
+
+    showPage("home");
+
+}
+
+
+/* ==========================================
+   LOAD CURRENT USER
+========================================== */
+
+window.addEventListener(
+"load",
+function(){
+
+    const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "hs_current_user"
+        )
+    );
+
+
+    if(currentUser){
+
+        if(currentUser.role === "admin"){
+
+            showPage("adminDashboard");
+
+        }else{
+
+            document
+            .getElementById("studentWelcome")
+            .innerText =
+            "Welcome, " +
+            currentUser.name;
+
+            updateStudentDashboard();
+
+        }
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
